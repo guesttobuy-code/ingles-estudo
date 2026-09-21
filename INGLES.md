@@ -156,3 +156,80 @@ Copiar este bloco por dia de estudo:
 - [ ] Bloco 4 — Fala (30-40min): Q&A sobre _______
 - Erros que se repetiram: _______
 ```
+
+
+## Referência de continuidade — conversa e portal (2026-09-21)
+
+Registro solicitado por Rafael para preservar os aprendizados entre sessões. Complementa o método existente; não altera automaticamente a trilha, os checkpoints ou o progresso.
+
+### Fontes e limites da leitura
+
+- Conversa compartilhada “Treinar inglês básico”: https://chatgpt.com/share/6ab170bb-b878-83e9-9972-8b86463a84d4 — conteúdo textual e transcrições lidos; não houve avaliação direta dos áudios.
+- Portal indicado: https://claude.ai/artifact/P9zMduKbR2gwH3jvURFawN — a página retornou uma verificação de acesso. A versão publicada não foi inspecionada diretamente.
+- Referência alternativa verificada: README.md, TREINO-CHATGPT.md, drills/REVISAO-GERAL.md, drills/TRILHA-B2.md, portal/LEIA-ME.md, portal/build_portal.py e portal/portal-template.html deste repositório. A documentação associa explicitamente o portal ao link acima. Não se presume que a publicação esteja sincronizada com o código.
+
+### Aprendizados da conversa
+
+- Ponto de partida declarado no chat: A1 avançado caminhando para A2; no método do repositório, A2 com retorno deliberado aos fundamentos. São descrições de trabalho, não uma avaliação formal de proficiência.
+- Rafael relata aprender melhor ao entender conceitos, relações e contextos. Ensinar a ideia e conectá-la a exemplos cotidianos antes de cobrar a forma.
+- Dificuldades relatadas: separar palavras na fala encadeada e recuperar expressões depois de alguns dias, além de montar frases espontaneamente.
+- Método aceito no chat: conceito → frases curtas → uso em conversa → recuperação espaçada. Poucas estruturas por vez, fala lenta e aumento gradual de naturalidade.
+- Usar uma pergunta por vez; esperar a resposta; oferecer pista antes de entregar toda a frase quando houver dificuldade.
+- Corrigir um ou dois pontos relevantes por resposta. Distinguir “entendi sua mensagem” de “a frase está correta”; elogios devem corresponder ao desempenho observado.
+- Não encerrar repetidamente a aula nem anunciar “última de hoje” quando Rafael pede para continuar. A duração acompanha sua disponibilidade.
+- A conversa prefere repetição contextualizada e distribuída; o plano anterior prescreve drills intensivos e uma rotina de 2–3h. Registrar essa diferença sem substituir silenciosamente a rotina: combinar prática de um conceito em cenários variados com revisitas posteriores, ajustando a duração à sessão.
+
+### Conteúdo praticado e pontos para retomada
+
+Praticado não significa consolidado. Houve uso, repetição e recuperação parcial de:
+I had; I went; I answered; I want to; then; let's; keep + verbo com -ing; breakfast/lunch/dinner; a call/a meeting/a busy day; this morning/last night.
+
+| Ocorrência nas transcrições | Referência para correção |
+|---|---|
+| I went to home | I went home; comparar com I went to work |
+| Let's keep study English | Let's keep studying English |
+| I want practice | I want to practice |
+| I had call / I had busy day | I had a call / I had a busy day |
+| in this morning | this morning |
+| I had eat dinner | I had dinner / I ate dinner |
+| Confusão entre had e went | I had breakfast = tomei café da manhã; I went to work = fui ao trabalho |
+| then entendido como “enquanto” | then indica sequência; while pode indicar simultaneidade |
+
+Cuidados com explicações anteriores:
+- “I had breakfast, then I went to work, then I went home” contém três ações no mesmo tempo verbal, não três tempos verbais.
+- “I had to work” é uma frase válida: “eu tive que trabalhar”; não equivale a “eu fui trabalhar”.
+- “Keep + -ing” é o padrão de continuar uma ação; não é correto generalizar que keep sempre exige uma ação.
+- Transcrições podem conter ruído. Confirmar frases ambíguas antes de atribuir um erro de pronúncia.
+- Repetir corretamente após um modelo não demonstra, sozinho, retenção ou produção independente.
+
+### Estado documentado da trilha
+
+Na leitura de 2026-09-21, a trilha registra tijolos 1–9 concluídos; o 10 (the × sem artigo) está em andamento, faltando re-checkpoint; seguem 11 (in/on/at) e 12 (plural e these/those).
+A conversa de voz já praticou expressões de passado, mas isso não autoriza marcar a etapa de passado como concluída. Conservar a diferença entre exposição na conversa e checkpoint formal.
+Antes da próxima aula, consultar a versão atual de REVISAO-GERAL.md e TRILHA-B2.md. Quem decide avançar continua sendo Rafael.
+
+### O que o portal representa
+
+O código implementa um “Caderno de Inglês”, com aparência de papel, tons creme, destaques vermelhos e suporte a tema escuro. As sete abas são:
+Hoje, Trilha, Revisão, Drills, Vocabulário, Método e Folhas.
+
+- Hoje: situação da trilha e próximo dia de vocabulário não marcado.
+- Trilha: mapa de 46 tijolos, com estado extraído do Markdown.
+- Revisão: resumo dos fundamentos antes de conteúdo novo.
+- Drills: respostas ocultas, revelação individual e marcação de três passadas.
+- Vocabulário: fatias por nível, busca, exemplos traduzidos, modo prova e dias marcados.
+- Método: rotina e prompt copiável de conversação.
+- Folhas: tabelas de acompanhamento e checklist para imprimir.
+
+O gerador espera 54 fatias e 5.232 entradas; esses números foram lidos no código/documentação, sem recontagem integral das entradas nesta sessão.
+Os Markdown são a fonte do conteúdo. O progresso de vocabulário e passadas é separado: o código prevê armazenamento local e sincronização por conta quando as capacidades do Claude estiverem disponíveis. Não foi acessado o progresso pessoal da conta.
+Marcar um dia ou passada como feito não comprova domínio de todas as palavras.
+
+### Uso desta referência nas próximas sessões
+
+1. Ler esta seção junto com a revisão e a trilha vigentes.
+2. Retomar um ponto já praticado com tentativa sem resposta visível.
+3. Explicar brevemente o conceito quando houver dúvida, usando exemplos contextualizados.
+4. Registrar erros recorrentes e distinguir produção com ajuda de produção independente.
+5. Atualizar os arquivos existentes conforme novas aulas e decisões; evitar versões paralelas da metodologia.
+6. Para conferir o visual publicado do artefato, ainda será necessário acesso à página ou uma exportação/capturas fornecidas por Rafael.
