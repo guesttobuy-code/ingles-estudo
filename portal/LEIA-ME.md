@@ -15,6 +15,17 @@ aborta se aparecer qualquer termo de jobhunt no pacote.
 3. Republicar o artifact com `capabilities: {db: {}, user: {}}` (progresso privado por conta).
    Pedido pronto pra sessão: "atualiza o portal de inglês".
 
+## Repositório online (privado, só estudo)
+
+https://github.com/guesttobuy-code/ingles-estudo — pasta local `C:\ingles-estudo`. Repositório
+SEPARADO, com histórico próprio, para nunca misturar com CVs e vagas.
+
+Depois de atualizar os .md aqui, sincronizar:
+
+1. `python portal/sync_estudo.py` — copia só o estudo (limpa o cabeçalho pessoal do INGLES.md e
+   aborta se achar termo de jobhunt).
+2. Em `C:\ingles-estudo`: `git add -A`, `git commit`, `git push`.
+
 ## Arquivos
 
 - `build_portal.py` — lê os .md e monta a página.
