@@ -1,0 +1,603 @@
+<title>Caderno de Inglês</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper: #F1E9D8;
+    --paper-deep: #E7DABB;
+    --line: #C8B48A;
+    --line-soft: #DED0A9;
+    --ink: #2B2620;
+    --ink-soft: #5F5442;
+    --ink-faint: #716550;
+    --card: #FFFDF8;
+    --red: #A2342A;
+    --red-ink: #7C2620;
+    --red-bg: #F4DCD6;
+    --blue: #2F4858;
+    --ok: #2A6244;
+    --ok-bg: #DDEBDD;
+    --shadow: rgba(43, 38, 32, 0.12);
+    --font-display: 'Zilla Slab', Georgia, 'Times New Roman', serif;
+    --font-body: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+    --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #1D1912; --paper-deep: #171310; --line: #453B29; --line-soft: #332B1E;
+      --ink: #ECE2CC; --ink-soft: #BAAD8F; --ink-faint: #9A8E74; --card: #262019;
+      --red: #E08A76; --red-ink: #F0A995; --red-bg: #3A2420; --blue: #8FB4C4;
+      --ok: #8CCBA0; --ok-bg: #1F3527; --shadow: rgba(0, 0, 0, 0.45);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #1D1912; --paper-deep: #171310; --line: #453B29; --line-soft: #332B1E;
+    --ink: #ECE2CC; --ink-soft: #BAAD8F; --ink-faint: #9A8E74; --card: #262019;
+    --red: #E08A76; --red-ink: #F0A995; --red-bg: #3A2420; --blue: #8FB4C4;
+    --ok: #8CCBA0; --ok-bg: #1F3527; --shadow: rgba(0, 0, 0, 0.45);
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.55; }
+  a { color: var(--blue); }
+  h1, h2, h3, h4 { font-family: var(--font-display); text-wrap: balance; color: var(--ink); margin: 0; line-height: 1.2; }
+  button { font: inherit; color: inherit; cursor: pointer; }
+  :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+  /* ---------- casca ---------- */
+  .top { background: var(--card); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 5; }
+  .top-in { max-width: 960px; margin: 0 auto; padding: 12px 16px 0; }
+  .brand { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; padding-bottom: 8px; }
+  .brand h1 { font-size: 24px; font-weight: 700; }
+  .sync { font-family: var(--font-mono); font-size: 12px; color: var(--ink-faint); margin-left: auto; }
+  .tabs { display: flex; gap: 4px; overflow-x: auto; margin: 0 -16px; padding: 0 16px; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tabs a { flex: none; padding: 10px 14px; text-decoration: none; color: var(--ink-soft); font-weight: 500; font-size: 15px;
+    border-bottom: 3px solid transparent; }
+  .tabs a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--red); }
+  .tabs a:hover { color: var(--ink); }
+
+  .view { max-width: 960px; margin: 0 auto; padding: 28px 16px 72px; display: flex; flex-direction: column; gap: 28px; }
+  .foot { max-width: 960px; margin: 0 auto; padding: 0 16px 40px; font-size: 13px; color: var(--ink-faint); }
+
+  /* ---------- peças comuns ---------- */
+  .eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); }
+  .page-head { display: flex; flex-direction: column; gap: 6px; }
+  .page-head h2 { font-size: 30px; font-weight: 700; }
+  .lede { color: var(--ink-soft); max-width: 62ch; margin: 0; }
+  .card { background: var(--card); border: 1px solid var(--line); padding: 18px 20px; display: flex; flex-direction: column; gap: 12px; }
+  .card h3 { font-size: 19px; font-weight: 600; }
+  .grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .btn { background: var(--card); border: 1px solid var(--line); padding: 7px 14px; border-radius: 3px; font-size: 14px; font-weight: 500; }
+  .btn:hover { border-color: var(--ink-faint); }
+  .btn.primary { background: var(--red); border-color: var(--red); color: #fff; }
+  :root[data-theme="dark"] .btn.primary { color: #1D1912; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn.primary { color: #1D1912; } }
+  .bar { height: 8px; background: var(--paper-deep); border-radius: 2px; overflow: hidden; }
+  .bar > i { display: block; height: 100%; background: var(--red); }
+  .stat { display: flex; flex-direction: column; gap: 6px; }
+  .stat .n { font-family: var(--font-display); font-size: 34px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+  .stat .n small { font-size: 16px; color: var(--ink-faint); font-weight: 500; }
+  .pill { display: inline-block; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.04em; padding: 2px 8px; border-radius: 2px; white-space: nowrap; }
+  .pill.ok { background: var(--ok-bg); color: var(--ok); }
+  .pill.doing { background: var(--red-bg); color: var(--red-ink); }
+  .pill.todo { background: var(--paper-deep); color: var(--ink-faint); }
+  .scroll { overflow-x: auto; }
+
+  /* ---------- markdown renderizado ---------- */
+  .doc { display: flex; flex-direction: column; gap: 22px; }
+  .doc h1 { font-size: 30px; font-weight: 700; }
+  .doc h2 { font-size: 23px; font-weight: 600; margin-bottom: 8px; }
+  .doc h3 { font-size: 18px; font-weight: 600; margin: 14px 0 6px; }
+  .doc p, .doc li { max-width: 70ch; }
+  .doc ul, .doc ol { padding-left: 22px; display: flex; flex-direction: column; gap: 6px; margin: 8px 0; }
+  .doc blockquote { margin: 8px 0; padding: 10px 16px; border-left: 4px solid var(--red); background: var(--card); color: var(--ink-soft); }
+  .doc blockquote p { margin: 4px 0; }
+  .doc code { font-family: var(--font-mono); font-size: 0.92em; background: var(--paper-deep); padding: 1px 5px; border-radius: 2px; }
+  .doc hr { border: 0; border-top: 1px solid var(--line); margin: 6px 0; }
+  .doc table { border-collapse: collapse; width: 100%; font-size: 14.5px; background: var(--card); }
+  .doc th, .doc td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+  .doc th { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-faint); font-weight: 500; background: var(--paper-deep); }
+  .doc .scroll { border: 1px solid var(--line); }
+  .doc em { color: var(--ink); }
+
+  /* ---------- drills ---------- */
+  .drill { background: var(--card); border: 1px solid var(--line); padding: 18px 20px; }
+  .drill h2 { font-size: 20px; margin-bottom: 10px; }
+  .drill-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px dashed var(--line); }
+  .passes { display: inline-flex; align-items: center; gap: 6px; }
+  .passes .lbl { font-family: var(--font-mono); font-size: 12px; color: var(--ink-faint); letter-spacing: 0.06em; text-transform: uppercase; margin-right: 2px; }
+  .pass { width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid var(--ink-faint); background: transparent; font-family: var(--font-mono); font-size: 13px; }
+  .pass[aria-pressed="true"] { background: var(--ok-bg); border-color: var(--ok); color: var(--ok); font-weight: 600; }
+  .drill li { list-style: decimal; }
+  .drill li::marker { color: var(--ink-faint); font-family: var(--font-mono); font-size: 0.85em; }
+  .drill .rev { margin-left: 8px; padding: 1px 9px; font-size: 12.5px; border: 1px solid var(--line); border-radius: 3px; background: var(--paper-deep); color: var(--ink-soft); }
+  .drill .ans { display: block; margin-top: 3px; padding: 4px 10px; border-left: 3px solid var(--ok); background: var(--ok-bg); color: var(--ink); }
+  .drill:not(.show-ans) .ans:not(.open) { display: none; }
+  .drill.show-ans .rev { display: none; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { padding: 6px 14px; border: 1px solid var(--line); background: var(--card); border-radius: 3px; text-decoration: none; color: var(--ink-soft); font-size: 14px; font-weight: 500; }
+  .chip[aria-current="true"], .chip.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+  /* ---------- vocabulário ---------- */
+  .search { width: 100%; max-width: 480px; padding: 10px 14px; font: inherit; border: 1px solid var(--line); background: var(--card); color: var(--ink); border-radius: 3px; }
+  .slices { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+  .slice { display: flex; flex-direction: column; gap: 6px; padding: 12px 14px; background: var(--card); border: 1px solid var(--line); text-decoration: none; color: var(--ink); }
+  .slice:hover { border-color: var(--ink-faint); }
+  .slice b { font-family: var(--font-mono); font-size: 15px; }
+  .slice span { font-size: 12.5px; color: var(--ink-faint); }
+  .day { background: var(--card); border: 1px solid var(--line); }
+  .day-head { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 14px; padding: 12px 16px; border-bottom: 1px solid var(--line-soft); background: var(--paper-deep); }
+  .day-head h3 { font-size: 17px; margin-right: auto; }
+  .day-done { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border: 1.5px solid var(--ink-faint); border-radius: 3px; background: var(--card); font-size: 14px; }
+  .day-done[aria-pressed="true"] { background: var(--ok-bg); border-color: var(--ok); color: var(--ok); font-weight: 600; }
+  .linkbtn { background: none; border: 0; padding: 4px 2px; color: var(--blue); text-decoration: underline; font-size: 13px; }
+  .entries { display: flex; flex-direction: column; }
+  .entry { padding: 12px 16px; border-bottom: 1px solid var(--line-soft); cursor: pointer; display: flex; flex-direction: column; gap: 3px; }
+  .entry:last-child { border-bottom: 0; }
+  .entry:hover { background: color-mix(in srgb, var(--paper-deep) 45%, var(--card)); }
+  .e-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 10px; }
+  .e-head .w { font-family: var(--font-display); font-size: 20px; font-weight: 700; }
+  .e-head .pos { font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-faint); letter-spacing: 0.03em; }
+  .e-head .tr { color: var(--ink-soft); }
+  .entry .en { margin: 0; font-style: italic; }
+  .entry .pt { margin: 0; color: var(--ink-soft); font-size: 14.5px; }
+  .entry:not(.open) .pt { display: none; }
+  .prova .entry:not(.open) .tr { filter: blur(6px); user-select: none; }
+  .tag { font-family: var(--font-mono); font-size: 11.5px; color: var(--red-ink); }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; }
+  .switch { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; }
+
+  /* ---------- método / chatgpt ---------- */
+  .prompt-box { width: 100%; min-height: 320px; padding: 14px; font-family: var(--font-mono); font-size: 13px; line-height: 1.5;
+    background: var(--card); color: var(--ink); border: 1px solid var(--line); border-radius: 3px; resize: vertical; }
+
+  /* ---------- folhas para imprimir ---------- */
+  table.ruled { width: 100%; border-collapse: collapse; background: var(--card); font-size: 14px; }
+  table.ruled th { text-align: left; padding: 8px 10px; font-family: var(--font-mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint); font-weight: 500; background: var(--paper-deep); border-bottom: 1px solid var(--line); }
+  table.ruled td { height: 34px; border-bottom: 1px solid var(--line-soft); }
+  .week-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+  .day-card { background: var(--card); border: 1px solid var(--line); padding: 14px 16px; display: flex; flex-direction: column; gap: 9px; break-inside: avoid; }
+  .day-card .dh { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--line-soft); padding-bottom: 7px; }
+  .day-card .dn { font-family: var(--font-display); font-weight: 600; font-size: 16px; }
+  .day-card .dd { font-family: var(--font-mono); font-size: 12px; color: var(--ink-faint); }
+  .chk { display: flex; gap: 8px; align-items: flex-start; font-size: 13.5px; color: var(--ink-soft); }
+  .chk i { flex: none; width: 13px; height: 13px; margin-top: 3px; border: 1.4px solid var(--ink-faint); border-radius: 2px; background: var(--card); }
+  .day-card .err { font-size: 12px; color: var(--ink-faint); font-family: var(--font-mono); border-top: 1px dashed var(--line); padding-top: 7px; }
+
+  @media (max-width: 680px) {
+    .grid2 { grid-template-columns: 1fr; }
+    .page-head h2 { font-size: 26px; }
+    .brand h1 { font-size: 21px; }
+    .sync { margin-left: 0; width: 100%; }
+  }
+  @media print {
+    :root { --paper: #fff; --card: #fff; --paper-deep: #F1EADA; --ink: #201C16; --ink-soft: #4A4235; --ink-faint: #6E634F; }
+    body { background: #fff; }
+    .top, .foot, .no-print { display: none !important; }
+    .view { padding: 0; max-width: 100%; }
+    .day-card, .drill, .card { break-inside: avoid; }
+    @page { size: A4; margin: 15mm; }
+  }
+</style>
+
+<header class="top">
+  <div class="top-in">
+    <div class="brand">
+      <h1>Caderno de Inglês</h1>
+      <span class="sync" id="sync" aria-live="polite"></span>
+    </div>
+    <nav class="tabs" id="tabs" aria-label="Seções"></nav>
+  </div>
+</header>
+<main class="view" id="view"></main>
+<footer class="foot" id="foot"></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js" integrity="sha384-/TQbtLCAerC3jgaim+N78RZSDYV7ryeoBCVqTuzRrFec2akfBkHS7ACQ3PQhvMVi" crossorigin="anonymous"></script>
+<script type="application/json" id="data">__DATA__</script>
+<script>
+(function () {
+  'use strict';
+  var D = JSON.parse(document.getElementById('data').textContent);
+  var view = document.getElementById('view');
+  var TABS = [['hoje', 'Hoje'], ['trilha', 'Trilha'], ['revisao', 'Revisão'], ['drills', 'Drills'],
+              ['vocab', 'Vocabulário'], ['metodo', 'Método'], ['folhas', 'Folhas']];
+  var TOTAL_WORDS = 0;
+  D.vocab.forEach(function (s) { s.days.forEach(function (d) { TOTAL_WORDS += d.entries.length; }); });
+
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
+  function md(text) { return window.marked ? marked.parse(text, { async: false }) : '<pre>' + esc(text) + '</pre>'; }
+
+  /* ===== progresso: aparelho + conta ===== */
+  var LS = 'caderno-ingles-progresso-v1';
+  var state = { vocab: {}, passes: {} };
+  var cloud = null, dirty = false, writing = false, timer = null, firstSnap = true;
+
+  try { var raw = JSON.parse(localStorage.getItem(LS) || 'null'); if (raw) state = { vocab: raw.vocab || {}, passes: raw.passes || {} }; } catch (e) {}
+
+  function setSync() {
+    document.getElementById('sync').textContent = cloud ? 'Progresso salvo na sua conta' : 'Progresso salvo só neste aparelho';
+  }
+  function saveLocal() { try { localStorage.setItem(LS, JSON.stringify(state)); } catch (e) {} }
+  function persist() {
+    saveLocal();
+    if (!cloud) return;
+    dirty = true; clearTimeout(timer); timer = setTimeout(flush, 800);
+  }
+  function flush() {
+    if (!cloud || !dirty) return;
+    if (writing) { timer = setTimeout(flush, 500); return; }
+    writing = true; dirty = false;
+    cloud.ref.set({ vocab: state.vocab, passes: state.passes, updatedAt: new Date().toISOString() })
+      .catch(function () { cloud = null; setSync(); })
+      .then(function () { writing = false; if (dirty) flush(); });
+  }
+  function mergeInto(local, remote) {
+    var out = { vocab: {}, passes: {} }, k;
+    for (k in local.vocab) out.vocab[k] = local.vocab[k].slice();
+    for (k in (remote.vocab || {})) {
+      var set = {}; (out.vocab[k] || []).concat(remote.vocab[k]).forEach(function (i) { set[i] = 1; });
+      out.vocab[k] = Object.keys(set).map(Number).sort(function (a, b) { return a - b; });
+    }
+    for (k in local.passes) out.passes[k] = local.passes[k];
+    for (k in (remote.passes || {})) out.passes[k] = Math.max(out.passes[k] || 0, remote.passes[k]);
+    return out;
+  }
+  function initCloud() {
+    if (!window.claude || !window.claude.use) return;
+    Promise.all([window.claude.use('db'), window.claude.use('user')]).then(function (r) {
+      var db = r[0], user = r[1];
+      if (!db || !user) return null;
+      return user.id().then(function (id) {
+        if (!id) return null;
+        var ref = db.doc('data/users/' + id + '/progress');
+        cloud = { ref: ref };
+        ref.onSnapshot(function (snap) {
+          var remote = snap.exists ? snap.data() : { vocab: {}, passes: {} };
+          if (firstSnap) {
+            firstSnap = false;
+            var merged = mergeInto(state, remote);
+            var changedVsRemote = JSON.stringify(merged.vocab) !== JSON.stringify(remote.vocab || {}) ||
+                                  JSON.stringify(merged.passes) !== JSON.stringify(remote.passes || {});
+            state = merged; saveLocal();
+            if (changedVsRemote) { dirty = true; flush(); }
+          } else if (!dirty && !writing) {
+            state = { vocab: remote.vocab || {}, passes: remote.passes || {} }; saveLocal();
+          }
+          setSync(); route(true);
+        }, function () { cloud = null; setSync(); });
+      });
+    }).catch(function () { cloud = null; setSync(); });
+  }
+
+  function doneDays(id) { return state.vocab[id] || []; }
+  function isDone(id, i) { return doneDays(id).indexOf(i) >= 0; }
+  function setDone(id, i, on) {
+    var set = doneDays(id).filter(function (x) { return x !== i; });
+    if (on) set.push(i);
+    state.vocab[id] = set.sort(function (a, b) { return a - b; });
+    persist();
+  }
+  function wordsDone() {
+    var n = 0;
+    D.vocab.forEach(function (s) { doneDays(s.id).forEach(function (i) { if (s.days[i]) n += s.days[i].entries.length; }); });
+    return n;
+  }
+
+  /* ===== links do markdown → navegação interna ===== */
+  function resolveHref(h) {
+    var base = decodeURIComponent(h).replace(/\/+$/, '').split('/').pop(), m;
+    if ((m = base.match(/^FASE-(\d)\.md$/))) return '#/drills/FASE-' + m[1];
+    if (base === 'EXTRA-IT.md') return '#/drills/EXTRA-IT';
+    if (base === 'REVISAO-GERAL.md') return '#/revisao';
+    if (base === 'TRILHA-B2.md') return '#/trilha';
+    if (base === 'INGLES.md') return '#/metodo';
+    if ((m = base.match(/^([ABC][12]\+?-\d\d)\.md$/))) return '#/vocab/' + m[1];
+    if (base === 'INDICE.md' || base === 'vocabulario') return '#/vocab';
+    if (base === 'drills') return '#/drills';
+    return null;
+  }
+  function fixLinks(root) {
+    root.querySelectorAll('a').forEach(function (a) {
+      var h = a.getAttribute('href') || '';
+      if (/^https?:/.test(h)) { a.target = '_blank'; a.rel = 'noopener noreferrer'; return; }
+      var t = resolveHref(h);
+      if (t) a.setAttribute('href', t);
+      else { var s = document.createElement('span'); s.innerHTML = a.innerHTML; a.replaceWith(s); }
+    });
+  }
+  function wrapTables(root) {
+    root.querySelectorAll('table').forEach(function (t) {
+      var w = el('div', 'scroll'); t.parentNode.insertBefore(w, t); w.appendChild(t);
+    });
+  }
+
+  /* ===== documento markdown, com drills interativos ===== */
+  function decorateDrill(sec, key) {
+    var h2 = sec.querySelector('h2');
+    var bar = el('div', 'drill-bar');
+    var toggle = el('button', 'btn', 'Mostrar respostas'); toggle.type = 'button';
+    toggle.onclick = function () {
+      var on = sec.classList.toggle('show-ans');
+      toggle.textContent = on ? 'Esconder respostas' : 'Mostrar respostas';
+    };
+    var passes = el('span', 'passes', '<span class="lbl">Passadas</span>');
+    var btns = [1, 2, 3].map(function (i) {
+      var b = el('button', 'pass', String(i)); b.type = 'button'; b.setAttribute('aria-label', 'Passada ' + i);
+      b.onclick = function () { var n = state.passes[key] || 0; state.passes[key] = (n === i) ? i - 1 : i; persist(); paint(); };
+      passes.appendChild(b); return b;
+    });
+    function paint() { var n = state.passes[key] || 0; btns.forEach(function (b, k) { b.setAttribute('aria-pressed', String(k < n)); }); }
+    paint();
+    bar.appendChild(toggle); bar.appendChild(passes); h2.after(bar);
+    sec.querySelectorAll('li').forEach(function (li) {
+      var html = li.innerHTML, i = html.indexOf(' → ');
+      if (i < 0) return;
+      var q = html.slice(0, i), a = html.slice(i + 3);
+      li.innerHTML = '<span class="q">' + q + '</span><button type="button" class="rev">ver resposta</button><span class="ans">→ ' + a + '</span>';
+      li.querySelector('.rev').onclick = function () { li.querySelector('.ans').classList.add('open'); this.style.display = 'none'; };
+    });
+  }
+  function renderDoc(text, docId, skipH1) {
+    var wrap = el('div', 'doc');
+    if (skipH1) text = text.replace(/^# [^\n]*\n+/, '');
+    text.split(/^(?=## )/m).forEach(function (part) {
+      var m = part.match(/^## (.+)$/m), isDrill = m && /^Drill/i.test(m[1].trim());
+      var sec = el(isDrill ? 'section' : 'div', isDrill ? 'drill' : 'block', md(part));
+      fixLinks(sec); wrapTables(sec);
+      if (isDrill) decorateDrill(sec, docId + '|' + m[1].trim());
+      wrap.appendChild(sec);
+    });
+    return wrap;
+  }
+
+  /* ===== trilha: lê as tabelas do markdown ===== */
+  var trilhaCache = null;
+  function parseTrilha() {
+    if (trilhaCache) return trilhaCache;
+    var box = el('div', null, md(D.docs.trilha));
+    var out = { done: 0, total: 0, doing: null, next: null };
+    box.querySelectorAll('tbody tr').forEach(function (tr) {
+      var c = tr.querySelectorAll('td'); if (c.length < 3) return;
+      var num = c[0].textContent.trim(), rng = num.match(/^(\d+)-(\d+)$/);
+      var count = rng ? (+rng[2] - +rng[1] + 1) : 1;
+      var st = c[2].textContent;
+      var title = c[1].textContent.trim();
+      out.total += count;
+      if (st.indexOf('✅') >= 0) out.done += count;
+      else if (st.indexOf('🔄') >= 0 && !out.doing) out.doing = { n: num, title: title };
+      else if (st.indexOf('⬜') >= 0 && !out.next) out.next = { n: num, title: title };
+    });
+    trilhaCache = out; return out;
+  }
+
+  /* ===== entradas de vocabulário ===== */
+  function entryEl(e, extra) {
+    var a = el('article', 'entry',
+      '<div class="e-head"><span class="w">' + esc(e.w) + '</span><span class="pos">' + esc(e.pos) + '</span><span class="tr">' + esc(e.tr) + '</span>' +
+      (extra ? '<span class="tag">' + esc(extra) + '</span>' : '') + '</div>' +
+      '<p class="en">' + esc(e.en) + '</p><p class="pt">' + esc(e.pt) + '</p>');
+    a.tabIndex = 0;
+    function flip() { a.classList.toggle('open'); }
+    a.onclick = function (ev) { if (!ev.target.closest('a,button')) flip(); };
+    a.onkeydown = function (ev) { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); flip(); } };
+    return a;
+  }
+  function pct(a, b) { return b ? Math.round(100 * a / b) : 0; }
+  function bar(p) { return '<div class="bar" role="img" aria-label="' + p + '%"><i style="width:' + p + '%"></i></div>'; }
+
+  /* ===== telas ===== */
+  function head(eyebrow, title, lede) {
+    return el('div', 'page-head', '<span class="eyebrow">' + esc(eyebrow) + '</span><h2>' + esc(title) + '</h2>' + (lede ? '<p class="lede">' + lede + '</p>' : ''));
+  }
+
+  function vHoje() {
+    var t = parseTrilha(), wd = wordsDone();
+    view.appendChild(head('Estudo de hoje', 'Um tijolo por vez.', 'A regra da casa: feijão com arroz. Só avança quando o checkpoint sai sem pensar — e toda lição nova começa pela releitura.'));
+
+    var stats = el('div', 'grid2');
+    stats.appendChild(el('div', 'card stat', '<span class="eyebrow">Trilha de gramática</span><div class="n">' + t.done + '<small> de ' + t.total + ' tijolos</small></div>' + bar(pct(t.done, t.total))));
+    stats.appendChild(el('div', 'card stat', '<span class="eyebrow">Vocabulário marcado</span><div class="n">' + wd.toLocaleString('pt-BR') + '<small> de ' + TOTAL_WORDS.toLocaleString('pt-BR') + ' palavras</small></div>' + bar(pct(wd, TOTAL_WORDS))));
+    view.appendChild(stats);
+
+    var now = el('div', 'card');
+    now.innerHTML = '<span class="eyebrow">Agora na trilha</span>' +
+      (t.doing ? '<h3>Tijolo ' + esc(t.doing.n) + ' — ' + esc(t.doing.title.replace(/\*\*/g, '')) + '</h3><span class="pill doing">em andamento</span>' :
+       '<h3>Nenhum tijolo em andamento</h3>') +
+      (t.next ? '<p class="lede">Depois: tijolo ' + esc(t.next.n) + ' — ' + esc(t.next.title.replace(/\*\*/g, '')) + '</p>' : '') +
+      '<div class="toolbar"><a class="btn primary" href="#/revisao" style="text-decoration:none">Começar pela releitura</a><a class="btn" href="#/trilha" style="text-decoration:none">Ver a trilha</a></div>';
+    view.appendChild(now);
+
+    var nx = null;
+    outer: for (var si = 0; si < D.vocab.length; si++) for (var di = 0; di < D.vocab[si].days.length; di++) if (!isDone(D.vocab[si].id, di)) { nx = { s: D.vocab[si], i: di }; break outer; }
+    var vc = el('div', 'card');
+    if (nx) {
+      var day = nx.s.days[nx.i];
+      vc.innerHTML = '<span class="eyebrow">Vocabulário de hoje</span><h3>' + esc(nx.s.id) + ' · ' + esc(day.label) + '</h3>' +
+        '<p class="lede">Toque numa palavra para ver a tradução da frase. Fale cada frase 5 vezes em voz alta e crie o cartão no Anki com a frase inteira.</p>';
+      var list = el('div', 'entries'); day.entries.forEach(function (e) { list.appendChild(entryEl(e)); });
+      var box = el('div', 'day'); box.appendChild(list); vc.appendChild(box);
+      var row = el('div', 'toolbar');
+      var done = el('button', 'btn primary', 'Marcei o dia como feito'); done.type = 'button';
+      done.onclick = function () { setDone(nx.s.id, nx.i, true); route(true); };
+      var open = el('a', 'btn', 'Abrir a fatia inteira'); open.href = '#/vocab/' + nx.s.id; open.style.textDecoration = 'none';
+      row.appendChild(done); row.appendChild(open); vc.appendChild(row);
+    } else vc.innerHTML = '<h3>Todas as fatias foram marcadas.</h3>';
+    view.appendChild(vc);
+
+    view.appendChild(el('div', 'card',
+      '<span class="eyebrow">Regras da casa</span><ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px">' +
+      '<li><b>Feijão com arroz:</b> um conceito por aula; repetir à exaustão, em cenários diferentes do mesmo tema.</li>' +
+      '<li><b>Releitura:</b> toda lição nova começa pela aba Revisão.</li>' +
+      '<li><b>Dia mínimo válido:</b> um drill (Bloco 1) + o vocabulário do dia (Bloco 2). Constância vence perfeição.</li>' +
+      '<li><b>Falar sempre em voz alta.</b> Ler só treina o olho; a terceira passada mede a boca.</li></ul>'));
+  }
+
+  function vTrilha() {
+    var t = parseTrilha();
+    view.appendChild(head('Mapa completo', 'Trilha até o B2', 'Cada linha é um tijolo — uma micro-aula. ' + t.done + ' de ' + t.total + ' concluídos.'));
+    view.appendChild(el('div', 'card stat', bar(pct(t.done, t.total))));
+    var doc = renderDoc(D.docs.trilha, 'trilha', true);
+    doc.innerHTML = doc.innerHTML.replace(/✅/g, '<span class="pill ok">feito</span>').replace(/🔄/g, '<span class="pill doing">em andamento</span>').replace(/⬜/g, '<span class="pill todo">a fazer</span>');
+    view.appendChild(doc);
+  }
+
+  function vRevisao() {
+    view.appendChild(head('Antes de toda lição nova', 'Revisão geral', 'Releia os tijolos, depois fale o drill relâmpago em voz alta com as respostas escondidas.'));
+    view.appendChild(renderDoc(D.docs.revisao, 'revisao', true));
+  }
+
+  function vDrills(arg) {
+    var cur = D.drills.filter(function (d) { return d.id === arg; })[0] || D.drills[0];
+    view.appendChild(head('Bloco 1 — verbos e montagem', 'Drills', 'Português → falar em inglês em voz alta → conferir. Três passadas por drill; a terceira precisa sair sem pausa.'));
+    var chips = el('div', 'chips');
+    D.drills.forEach(function (d) {
+      var a = el('a', 'chip', esc(d.id.replace('-', ' '))); a.href = '#/drills/' + d.id;
+      if (d.id === cur.id) a.setAttribute('aria-current', 'true');
+      chips.appendChild(a);
+    });
+    view.appendChild(chips);
+    view.appendChild(renderDoc(cur.md, cur.id));
+  }
+
+  var vocabLevel = 'todos';
+  function vVocab(arg) {
+    var slice = D.vocab.filter(function (s) { return s.id === arg; })[0];
+    if (slice) return vSlice(slice);
+    view.appendChild(head('Bloco 2 — Oxford 5000', 'Vocabulário', TOTAL_WORDS.toLocaleString('pt-BR') + ' palavras em ' + D.vocab.length + ' fatias, com tradução e frase de aplicação. Dez palavras por dia.'));
+    var input = el('input', 'search'); input.type = 'search'; input.placeholder = 'Buscar palavra ou tradução…'; input.setAttribute('aria-label', 'Buscar no vocabulário');
+    view.appendChild(input);
+    var results = el('div'); view.appendChild(results);
+    var chips = el('div', 'chips');
+    ['todos', 'A1', 'A2', 'B1', 'B2', 'B2+', 'C1'].forEach(function (l) {
+      var b = el('button', 'chip' + (l === vocabLevel ? ' on' : ''), l === 'todos' ? 'Todos' : l); b.type = 'button';
+      b.onclick = function () { vocabLevel = l; route(true); };
+      chips.appendChild(b);
+    });
+    view.appendChild(chips);
+    var grid = el('div', 'slices');
+    D.vocab.filter(function (s) { return vocabLevel === 'todos' || s.level === vocabLevel; }).forEach(function (s) {
+      var n = doneDays(s.id).length, tot = s.days.length;
+      var a = el('a', 'slice', '<b>' + esc(s.id) + '</b><span>' + esc(s.range) + '</span>' + bar(pct(n, tot)) + '<span>' + n + ' de ' + tot + ' dias</span>');
+      a.href = '#/vocab/' + s.id; grid.appendChild(a);
+    });
+    view.appendChild(grid);
+
+    var index = null, t = null;
+    input.addEventListener('input', function () {
+      clearTimeout(t);
+      t = setTimeout(function () {
+        var q = input.value.trim().toLowerCase();
+        results.innerHTML = '';
+        if (q.length < 2) return;
+        if (!index) { index = []; D.vocab.forEach(function (s) { s.days.forEach(function (d, di) { d.entries.forEach(function (e) { index.push({ e: e, s: s.id, l: d.label }); }); }); }); }
+        var hits = index.filter(function (x) { return x.e.w.toLowerCase().indexOf(q) === 0 || x.e.w.toLowerCase().indexOf(q) > 0 || x.e.tr.toLowerCase().indexOf(q) >= 0; })
+          .sort(function (a, b) { return (b.e.w.toLowerCase() === q) - (a.e.w.toLowerCase() === q) || (b.e.w.toLowerCase().indexOf(q) === 0) - (a.e.w.toLowerCase().indexOf(q) === 0); })
+          .slice(0, 40);
+        var box = el('div', 'day'); var list = el('div', 'entries');
+        if (!hits.length) list.appendChild(el('div', 'entry', 'Nada encontrado para “' + esc(q) + '”.'));
+        hits.forEach(function (x) { list.appendChild(entryEl(x.e, x.s + ' · ' + x.l.split(' — ')[0])); });
+        box.appendChild(list); results.appendChild(box);
+      }, 160);
+    });
+  }
+
+  function vSlice(s) {
+    var n = doneDays(s.id).length, tot = s.days.length;
+    var back = el('a', 'linkbtn', '← todas as fatias'); back.href = '#/vocab';
+    view.appendChild(back);
+    view.appendChild(head('Nível ' + s.level, s.id, esc(s.range) + ' · ' + n + ' de ' + tot + ' dias marcados'));
+    var tb = el('div', 'toolbar');
+    var sw = el('label', 'switch', '<input type="checkbox" id="prova"> Modo prova (esconde a tradução até você tocar)');
+    tb.appendChild(sw); view.appendChild(tb);
+    var wrap = el('div', 'doc'); wrap.style.gap = '16px'; view.appendChild(wrap);
+    sw.querySelector('input').onchange = function () { wrap.classList.toggle('prova', this.checked); };
+    s.days.forEach(function (d, i) {
+      var sec = el('section', 'day');
+      var h = el('div', 'day-head', '<h3>' + esc(d.label) + '</h3>');
+      var upTo = el('button', 'linkbtn', 'marcar até aqui'); upTo.type = 'button';
+      upTo.onclick = function () { for (var k = 0; k <= i; k++) setDone(s.id, k, true); route(true); };
+      var btn = el('button', 'day-done', 'feito'); btn.type = 'button';
+      btn.setAttribute('aria-pressed', String(isDone(s.id, i)));
+      btn.onclick = function () { setDone(s.id, i, !isDone(s.id, i)); btn.setAttribute('aria-pressed', String(isDone(s.id, i))); };
+      h.appendChild(upTo); h.appendChild(btn); sec.appendChild(h);
+      var list = el('div', 'entries'); d.entries.forEach(function (e) { list.appendChild(entryEl(e)); });
+      sec.appendChild(list); wrap.appendChild(sec);
+    });
+    var idx = D.vocab.indexOf(s), nav = el('div', 'toolbar');
+    if (idx > 0) { var p = el('a', 'btn', '← ' + D.vocab[idx - 1].id); p.href = '#/vocab/' + D.vocab[idx - 1].id; p.style.textDecoration = 'none'; nav.appendChild(p); }
+    if (idx < D.vocab.length - 1) { var nx = el('a', 'btn', D.vocab[idx + 1].id + ' →'); nx.href = '#/vocab/' + D.vocab[idx + 1].id; nx.style.textDecoration = 'none'; nav.appendChild(nx); }
+    view.appendChild(nav);
+  }
+
+  function vMetodo() {
+    view.appendChild(head('Como o estudo funciona', 'Método', 'Rotina de 2 a 3 horas em quatro blocos, fases de verbo e a regra de ouro: base sólida antes de velocidade.'));
+    view.appendChild(renderDoc(D.docs.metodo, 'metodo', true));
+    var box = el('section', 'card');
+    box.innerHTML = '<span class="eyebrow">Conversação por voz</span><h3>Prompt para treinar no ChatGPT</h3>' +
+      '<p class="lede">Cole como primeira mensagem (ou nas Instructions de um Project) e use o modo de voz. Ele já conhece o seu nível e o que você aprendeu.</p>';
+    var ta = el('textarea', 'prompt-box'); ta.readOnly = true; ta.value = D.docs.chatgpt; ta.setAttribute('aria-label', 'Prompt para o ChatGPT');
+    var row = el('div', 'toolbar');
+    var cp = el('button', 'btn primary', 'Copiar prompt'); cp.type = 'button';
+    var msg = el('span', 'lede', '');
+    cp.onclick = function () {
+      function ok() { msg.textContent = 'Copiado.'; }
+      function fallback() { ta.focus(); ta.select(); try { document.execCommand('copy') ? ok() : (msg.textContent = 'Selecionei o texto: use Ctrl+C.'); } catch (e) { msg.textContent = 'Selecionei o texto: use Ctrl+C.'; } }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(ta.value).then(ok, fallback); else fallback();
+    };
+    row.appendChild(cp); row.appendChild(msg);
+    box.appendChild(ta); box.appendChild(row); view.appendChild(box);
+  }
+
+  function vFolhas() {
+    view.appendChild(head('Para imprimir', 'Folhas', 'Trackers em branco e o checklist da semana, para quem prefere caneta. Use Ctrl+P: só esta tela é impressa.'));
+    function ruled(title, cols, n) {
+      var s = el('section', 'doc');
+      s.innerHTML = '<h2>' + title + '</h2>';
+      var rows = ''; for (var i = 0; i < n; i++) rows += '<tr>' + cols.map(function () { return '<td></td>'; }).join('') + '</tr>';
+      var w = el('div', 'scroll', '<table class="ruled"><thead><tr>' + cols.map(function (c) { return '<th>' + c + '</th>'; }).join('') + '</tr></thead><tbody>' + rows + '</tbody></table>');
+      s.appendChild(w); return s;
+    }
+    view.appendChild(ruled('Erros que se repetem', ['Data', 'Erro', 'Forma certa', 'Tijolo'], 8));
+    var wk = el('section', 'doc'); wk.innerHTML = '<h2>Checklist da semana</h2>';
+    var g = el('div', 'week-grid');
+    ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'].forEach(function (d) {
+      var body = d === 'Domingo'
+        ? '<div class="chk"><i></i>Reler o REVISÃO da semana</div><div class="chk"><i></i>Somar as palavras da semana</div><div class="err">Tijolo em que estou: ________</div>'
+        : '<div class="chk"><i></i>Bloco 1 — Drill (40 min)</div><div class="chk"><i></i>Bloco 2 — Vocabulário (___ novas)</div><div class="chk"><i></i>Bloco 3 — Listening (30 min)</div><div class="chk"><i></i>Bloco 4 — Fala (30–40 min)</div><div class="err">Erros que se repetiram: ________</div>';
+      g.appendChild(el('div', 'day-card', '<div class="dh"><span class="dn">' + d + '</span><span class="dd">___/___</span></div>' + body));
+    });
+    wk.appendChild(g); view.appendChild(wk);
+    var pr = el('button', 'btn no-print', 'Imprimir'); pr.type = 'button';
+    pr.onclick = function () { try { window.print(); } catch (e) {} };
+    view.appendChild(pr);
+  }
+
+  /* ===== roteador ===== */
+  var VIEWS = { hoje: vHoje, trilha: vTrilha, revisao: vRevisao, drills: vDrills, vocab: vVocab, metodo: vMetodo, folhas: vFolhas };
+  var lastKey = null;
+  function route(force) {
+    var parts = (location.hash || '#/hoje').replace(/^#\/?/, '').split('/');
+    var tab = VIEWS[parts[0]] ? parts[0] : 'hoje', arg = decodeURIComponent(parts[1] || '');
+    var key = tab + '/' + arg;
+    // não redesenhar durante atualização remota se a tela é a mesma e o usuário está lendo drills
+    var scrollY = window.scrollY;
+    view.innerHTML = '';
+    VIEWS[tab](arg);
+    document.getElementById('tabs').querySelectorAll('a').forEach(function (a) {
+      a.setAttribute('aria-current', a.dataset.tab === tab ? 'page' : 'false');
+    });
+    if (key !== lastKey) window.scrollTo(0, 0); else window.scrollTo(0, scrollY);
+    lastKey = key;
+  }
+
+  var nav = document.getElementById('tabs');
+  TABS.forEach(function (t) { var a = el('a', null, t[1]); a.href = '#/' + t[0]; a.dataset.tab = t[0]; nav.appendChild(a); });
+  document.getElementById('foot').textContent = 'Conteúdo de ' + D.built + '. As marcações de progresso (dias de vocabulário, passadas dos drills) são só suas; a trilha é atualizada quando uma lição é concluída.';
+  window.addEventListener('hashchange', function () { route(false); });
+  setSync();
+  route(false);
+  initCloud();
+})();
+</script>
