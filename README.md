@@ -9,6 +9,7 @@ drills para falar em voz alta. Nível de partida: A2, regressão deliberada ao b
 | Pasta / arquivo | O que é |
 |---|---|
 | [INGLES.md](INGLES.md) | A metodologia: rotina diária, fases, agenda de 2-3h, regras do método |
+| [PLANO-DIARIO.md](PLANO-DIARIO.md) | Plano de aulas neste chat: mínimo de 1h diária, ciclo semanal e registro |
 | [drills/TRILHA-B2.md](drills/TRILHA-B2.md) | O mapa de 46 tijolos do A2 até o B2 de entrevista |
 | [drills/REVISAO-GERAL.md](drills/REVISAO-GERAL.md) | Resumo vivo dos tijolos já vistos — reler antes de toda lição nova |
 | [drills/](drills/) | Folhas de drill FASE-0 a FASE-4 e a aula EXTRA-IT |
